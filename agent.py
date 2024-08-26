@@ -1,0 +1,1 @@
+pipenv install langchain langchain-pinecone langchain-community pincone-client langchainhub python-dotenv tenacity pymongo pandas langchain-groq 
