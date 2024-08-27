@@ -2,12 +2,12 @@ import sys
 import os
 # sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 import asyncio
+from tool import tools
 from langchain_groq import ChatGroq
 from langchain import hub
 from langchain.agents import create_tool_calling_agent
 from langchain.agents import AgentExecutor
 from langchain import PromptTemplate
-from tool import tools
 from langchain_community.chat_message_histories import ChatMessageHistory
 from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
@@ -48,36 +48,13 @@ agent_with_chat_history = RunnableWithMessageHistory(
 def agent(question):
     def create_prompt_template():
         template = """
-                    You are a CRM workflow generator. Create a CRM workflow based on the following criteria:
-                    Use the tool 'crm-workflow' fdr the json generation.
+            You are a chatbot to answer the user queries:
+            
+            Tools:
+            1. Use the tool 'CRMschema' which contains all the related database tables so use this whenever require any data from the customer relation management database.
+            2. Use the tool 'crm-workflow' for creating the workflow.
 
             {question}
-
-            Please describe the workflow in a JSON format with the following structure:
-            {{
-                "workflow": {{
-                    "version": "1.0",
-                    "steps": [
-                        {{
-                            "name": "Step Name",
-                            "criteria": {{
-                                "field": "value"
-                            }},
-                            "actions": [
-                                {{
-                                    "name": "Action Name",
-                                    "type": "action_type",
-                                    "details": {{
-                                        "key": "value"
-                                    }}
-                                }}
-                            ]
-                        }}
-                    ]
-                }}
-            }}
-
-            Ensure that the JSON is valid and follows this structure.
         """
         return PromptTemplate.from_template(template=template)
 
@@ -103,6 +80,7 @@ def agent(question):
 
 question = input("Ask a question:")
 output = agent(question)
+print(output)
 
 # with open("output.txt", "w") as file:
 #     file.write(output)

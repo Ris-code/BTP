@@ -1,65 +1,28 @@
 ```json
 {
-	"workflow": {
-		"version": "1.0",
-		"steps": [
-			{
-				"name": "Send Email to Salesperson",
-				"criteria": {
-					"field": "lead_status",
-					"value": "Interested"
-				},
-				"actions": [
-					{
-						"name": "Send Email",
-						"type": "email",
-						"details": {
-							"to": "salesperson@example.com",
-							"subject": "New Interested Lead",
-							"body": "A new lead has expressed interest. Please follow up with them."
-						}
-					}
-				]
-			},
-			{
-				"name": "Notify Marketing (if ad source)",
-				"criteria": {
-					"field": "lead_source",
-					"value": "Ad"
-				},
-				"actions": [
-					{
-						"name": "Send Notification",
-						"type": "slack",
-						"details": {
-							"channel": "#marketing",
-							"message": "New lead from ad: {{lead_name}}"
-						}
-					}
-				]
-			},
-			{
-				"name": "Reminder to Salesperson",
-				"criteria": {
-					"field": "last_contacted",
-					"value": {
-						"operator": "less_than",
-						"value": "2 weeks ago"
-					}
-				},
-				"actions": [
-					{
-						"name": "Send Email",
-						"type": "email",
-						"details": {
-							"to": "salesperson@example.com",
-							"subject": "Reminder: Follow up on {{lead_name}}",
-							"body": "This is a reminder to follow up with {{lead_name}}. They haven't been contacted in over two weeks."
-						}
-					}
-				]
-			}
-		]
-	}
+  "workflow": {
+    "steps": [
+      {
+        "name": "Get Customer Data",
+        "description": "Retrieve customer information from the CRM database",
+        "input": {
+          "type": "customer_id"
+        },
+        "output": {
+          "type": "customer_data"
+        }
+      },
+      {
+        "name": "Process Order",
+        "description": "Process the customer's order",
+        "input": {
+          "type": "order_id"
+        },
+        "output": {
+          "type": "order_status"
+        }
+      }
+    ]
+  }
 }
 ```
