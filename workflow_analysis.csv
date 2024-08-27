@@ -1,0 +1,1004 @@
+SNo,Prompt,JSON
+1,"I want to create a workflow named ""User Approval Flow (on creation)"" for the ""Users"" module in inactive status. This workflow triggers when a new record is created. The condition for this workflow is that if the ""Status"" field is set to ""Approved"", an email notification titled ""User Approval Email"" will be sent to the specified email address in the record. This email uses the template ""User Registration Confirmation Mail For Partner"" and is sent immediately upon meeting the condition.","{
+  ""ID"": ""C897E94E-741A-45A3-80EB-9F21F098965E"",
+  ""RuleName"": ""User Approval Flow (on creation)"",
+  ""Status"": ""InActive"",
+  ""Module"": {
+    ""Id"": """",
+    ""ModuleObject"": ""77"",
+    ""ModuleName"": ""Users"",
+    ""ModuleDescription"": null,
+    ""ModuleEvaluationCondition"": ""Created"",
+    ""FieldChangeList"": null,
+    ""RecordList"": [
+      
+    ]
+  },
+  ""Criteria"": [
+    {
+      ""Sequence"": 1,
+      ""Name"": ""Criteria1"",
+      ""LogicalCondition"": {
+        ""Value"": 1,
+        ""Text"": ""(##1##)""
+      },
+      ""Criteria"": [
+        {
+          ""Operator"": ""in(N'@')"",
+          ""TextSearch"": ""Approved"",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 22398,
+            ""EntityId"": 77,
+            ""Name"": ""Status"",
+            ""Label"": ""Status"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""dropdown"",
+            ""LangShortKey"": ""Status_Langshort"",
+            ""IsRequired"": true,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""Status_Lan"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""BusinessRule"": 1226,
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false
+          },
+          ""SearchList"": [
+            {
+              ""key"": ""Active"",
+              ""value"": ""Approved"",
+              ""Id"": 22398,
+              ""IsSelected"": true
+            }
+          ],
+          ""SearchValue"": ""Active""
+        }
+      ]
+    }
+  ],
+  ""Task"": [
+    {
+      ""Id"": """",
+      ""Name"": ""User Approval Email"",
+      ""Template"": ""133"",
+      ""AdditionalEmails"": """",
+      ""RecipientType"": ""Email Field"",
+      ""RecordList"": [
+        {
+          ""Id"": 22391,
+          ""Name"": ""Email address"",
+          ""IsSelected"": true
+        }
+      ],
+      ""TaskType"": ""Email"",
+      ""TaskCategory"": ""immediate"",
+      ""CriteriaName"": ""Criteria1""
+    }
+  ],
+  ""ScheduleInfo"": [
+    
+  ],
+  ""FinalTasks"": [
+    
+  ],
+  ""ScheduleTask"": [
+    
+  ]
+}"
+2,"I want to create a workflow named ""Partner Prospect Creation Workflow"" for the ""Partner Prospects"" module, currently set to inactive status. This workflow triggers when a record is edited and has two main conditions. The first condition is that the ""Is Prospect From Create Account"" field is marked as ""Yes"" and the ""Prospect Status"" is set to ""New"". When these criteria are met, an immediate email notification, titled ""New Prospect From Reg Page"", will be sent to the email address ""globalcmm@yopmail.com"" using the template ""Prospect Registration Email to Admin"".
+The second condition requires that the ""Prospect Status"" field be set to ""Rejected"" and the ""Is Prospect From Create Account"" field marked as ""No"". Upon meeting these criteria, another immediate email, titled ""Partner Prospect Rejection"", will be sent to the same email address using the template ""Partner Rejection Notification"". ","{
+  ""ID"": ""39D52C6D-02AC-4543-A693-59353A740F50"",
+  ""RuleName"": ""Partner Prospect Creation Workflow"",
+  ""Status"": ""InActive"",
+  ""Module"": {
+    ""Id"": """",
+    ""ModuleObject"": ""1147"",
+    ""ModuleName"": ""Partner Prospects"",
+    ""ModuleDescription"": null,
+    ""ModuleEvaluationCondition"": ""Edited"",
+    ""FieldChangeList"": null,
+    ""RecordList"": [
+      
+    ]
+  },
+  ""Criteria"": [
+    {
+      ""Sequence"": 1,
+      ""Name"": ""Criteria1"",
+      ""Criteria"": [
+        {
+          ""Operator"": ""in(N'@')"",
+          ""TextSearch"": ""1"",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 47374,
+            ""EntityId"": 1147,
+            ""Name"": ""IsProspectFromCreateAccount"",
+            ""Label"": ""IsProspectFromCreateAccount"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""checkbox"",
+            ""LangShortKey"": ""IsProspectFromCreateAccount_Langshort"",
+            ""IsRequired"": false,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""IsProspectFromCreateAccount_Lan"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false,
+            ""SortOrder"": 5
+          }
+        },
+        {
+          ""Operator"": ""in(N'@')"",
+          ""TextSearch"": ""New"",
+          ""SearchList"": [
+            {
+              ""key"": ""New"",
+              ""value"": ""New"",
+              ""IsSelected"": true
+            }
+          ],
+          ""LogicalOperator"": ""and"",
+          ""Order"": 1,
+          ""Attribute"": {
+            ""Id"": 46160,
+            ""EntityId"": 1147,
+            ""Name"": ""PProspectStatus"",
+            ""Label"": ""Prospect Status"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""dropdown"",
+            ""LangShortKey"": ""PProspectStatus_Langshort"",
+            ""IsRequired"": false,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""PProspectStatus_Lan"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""BusinessRule"": 2512,
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false,
+            ""SortOrder"": 11
+          },
+          ""SearchValue"": ""New""
+        }
+      ]
+    },
+    {
+      ""Sequence"": 2,
+      ""Name"": ""Criteria2"",
+      ""Criteria"": [
+        {
+          ""Operator"": ""in(N'@')"",
+          ""TextSearch"": ""Rejected"",
+          ""SearchList"": [
+            {
+              ""key"": ""Rejected"",
+              ""value"": ""Rejected"",
+              ""IsSelected"": true
+            }
+          ],
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 46160,
+            ""EntityId"": 1147,
+            ""Name"": ""PProspectStatus"",
+            ""Label"": ""Prospect Status"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""dropdown"",
+            ""LangShortKey"": ""PProspectStatus_Langshort"",
+            ""IsRequired"": false,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""PProspectStatus_Lan"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""BusinessRule"": 2512,
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false,
+            ""SortOrder"": 11
+          },
+          ""SearchValue"": ""Rejected""
+        },
+        {
+          ""Operator"": ""in(N'@')"",
+          ""TextSearch"": ""0"",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 1,
+          ""Attribute"": {
+            ""Id"": 47374,
+            ""EntityId"": 1147,
+            ""Name"": ""IsProspectFromCreateAccount"",
+            ""Label"": ""IsProspectFromCreateAccount"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""checkbox"",
+            ""LangShortKey"": ""IsProspectFromCreateAccount_Langshort"",
+            ""IsRequired"": false,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""IsProspectFromCreateAccount_Lan"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false,
+            ""SortOrder"": 5
+          }
+        }
+      ]
+    }
+  ],
+  ""Task"": [
+    {
+      ""Id"": """",
+      ""Name"": ""New Prospect From Reg Page"",
+      ""Template"": ""854"",
+      ""AdditionalEmails"": """",
+      ""RecipientType"": ""Users"",
+      ""RecordList"": [
+        {
+          ""Id"": ""123612F7-C83F-4F81-8119-82D15DB725CA"",
+          ""Name"": ""globalcmm@yopmail.com"",
+          ""IsSelected"": true
+        }
+      ],
+      ""TaskType"": ""Email"",
+      ""TaskCategory"": ""immediate"",
+      ""CriteriaName"": ""Criteria1""
+    },
+    {
+      ""Id"": """",
+      ""Name"": ""Partner Prospect Rejection"",
+      ""Template"": ""158"",
+      ""AdditionalEmails"": null,
+      ""RecipientType"": ""Users"",
+      ""RecordList"": [
+        {
+          ""Id"": ""123612F7-C83F-4F81-8119-82D15DB725CA"",
+          ""Name"": ""globalcmm@yopmail.com"",
+          ""IsSelected"": true
+        }
+      ],
+      ""TaskType"": ""Email"",
+      ""TaskCategory"": ""immediate"",
+      ""CriteriaName"": ""Criteria2""
+    }
+  ],
+  ""ScheduleInfo"": [
+    
+  ],
+  ""FinalTasks"": [
+    
+  ]
+}"
+3,"I want to create a workflow named ""Scheduled Actions for Prospects [Create or Update] (AH)"" for the ""Prospect"" module in inactive status. This workflow will trigger when a record is either created or updated. The workflow includes several conditions and actions:
+The workflow will execute 3 immediate actionson validating the criteria that if both the ""First Name"" and ""Last Name"" fields are not empty, and if the Lead Score is empty or  if the Lead Score has changed and if the ""Status"" field has changed. The first immediate action involves sending an email titled ""Email"" to the related user using the template ""User Registration Confirmation Mail For Partner,"" along with an additional recipient at ""workflowemailcheckuser@yopmail.com."" The second action will update the ""Description"" field to state ""A new prospect details submitted."" Lastly, if the ""Name"" field contains ""ZINFI,"" the workflow will send an email titled ""Email with ZINFI"" using the template ""User Approval Email"" to additional email addresses including ""sa2emailcheckuser@yopmail.com@zinfitech.com."" This action will also assign tasks to users with emails ""workflowchkusrcpa@mailinator.com"" and ""abhishek.mukherjee@zinfitech.com,"" update the ""Company Score"" field to ""1000,"" and set the ""Description"" field to ""Scheduled Action Executed,"" with all actions scheduled to occur immediately after the ""Date Modified.""
+In addition to these immediate actions, the workflow includes scheduled tasks. For example, if the ""First Name"" field contains ""ZINFI"" and the ""Primary Address Country"" is set to ""USA,"" an email notification titled ""Schedule Email"" will be sent to the related user using the template ""User Approval Email"" and an additional email address at ""saemailcheckuser@yopmail.com,"" scheduled to occur 15 minutes after the ""Date Modified."" Another scheduled action will occur if the ""Annual Revenue"" field is not empty; in this case, the workflow will assign a task to the user with the email ""zinfitestapprovalflwchku@yopmail.com"" and send an email titled ""Email for Schedule Action 2"" using the template ""User Approval Email"" to ""sa1emailcheckuser@yopmail.com,"" scheduled to occur 2 days after the the record has been created","{
+  ""ID"": ""1AE11C5A-F355-4F38-BE51-C09CE4C3E2F9"",
+  ""RuleName"": ""Scheduled Actions for Prospects [Create or Update] (AH)"",
+  ""Status"": ""InActive"",
+  ""Module"": {
+    ""Id"": """",
+    ""ModuleObject"": ""9"",
+    ""ModuleName"": ""Prospect"",
+    ""ModuleDescription"": null,
+    ""ModuleEvaluationCondition"": ""Both"",
+    ""FieldChangeList"": null,
+    ""ModuleEvaluationFrequency"": ""Once"",
+    ""RecordList"": [
+      
+    ]
+  },
+  ""Criteria"": [
+    {
+      ""Sequence"": 1,
+      ""Name"": ""Criteria1"",
+      ""LogicalCondition"": {
+        ""Value"": 3,
+        ""Text"": ""( ##1## AND ##2## AND ##3##) OR (##4## AND ##5## )""
+      },
+      ""Criteria"": [
+        {
+          ""Operator"": ""!=''"",
+          ""TextSearch"": """",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 673,
+            ""EntityId"": 9,
+            ""Name"": ""FirstName"",
+            ""Label"": ""First Name"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""textbox"",
+            ""LangShortKey"": ""LBL_LIST_FIRST_NAME"",
+            ""IsRequired"": true,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""LBL_FIRST_Name"",
+            ""IsIdentity"": ""true"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false
+          }
+        },
+        {
+          ""Operator"": ""!=''"",
+          ""TextSearch"": """",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 676,
+            ""EntityId"": 9,
+            ""Name"": ""LastName"",
+            ""Label"": ""Last Name"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""textbox"",
+            ""LangShortKey"": ""LBL_LIST_LastName"",
+            ""IsRequired"": true,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""LBL_LAST_NAME"",
+            ""IsIdentity"": ""true"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false
+          }
+        },
+        {
+          ""Operator"": ""=''"",
+          ""TextSearch"": """",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 44921,
+            ""EntityId"": 9,
+            ""Name"": ""Score"",
+            ""Label"": ""Lead Score"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""number"",
+            ""LangShortKey"": ""Score_Langshort"",
+            ""IsRequired"": false,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""Score_Lan"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false
+          }
+        },
+        {
+          ""Operator"": ""isChanged"",
+          ""TextSearch"": ""1"",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 44921,
+            ""EntityId"": 9,
+            ""Name"": ""Score"",
+            ""Label"": ""Lead Score"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""number"",
+            ""LangShortKey"": ""Score_Langshort"",
+            ""IsRequired"": false,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""Score_Lan"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false
+          }
+        },
+        {
+          ""Operator"": ""isChanged"",
+          ""TextSearch"": ""1"",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 946,
+            ""EntityId"": 9,
+            ""Name"": ""STATUS"",
+            ""Label"": ""Status"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""dropdown"",
+            ""LangShortKey"": ""LBL_STATS"",
+            ""IsRequired"": false,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""LBL_STATUS"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""BusinessRule"": 59,
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false
+          },
+          ""SearchList"": ""[]"",
+          ""SearchValue"": ""1""
+        }
+      ]
+    }
+  ],
+  ""Task"": [
+    {
+      ""Id"": """",
+      ""Name"": ""Email"",
+      ""Template"": ""102"",
+      ""AdditionalEmails"": ""workflowemailcheckuser@yopmail.com"",
+      ""RecipientType"": ""Related User"",
+      ""RecordList"": [
+        {
+          ""Id"": 33540,
+          ""Name"": ""Modified by"",
+          ""IsSelected"": true
+        }
+      ],
+      ""TaskType"": ""Email"",
+      ""TaskCategory"": ""immediate"",
+      ""CriteriaName"": ""Criteria1""
+    },
+    {
+      ""Id"": """",
+      ""Name"": ""Field Update"",
+      ""FieldToUpdate"": ""670"",
+      ""FieldValueUpdateType"": ""Text"",
+      ""NewFieldValue"": ""A new prospect details submitted. "",
+      ""SelectedFieldObject"": {
+        ""key"": 670,
+        ""value"": ""Description"",
+        ""AppType"": ""textArea"",
+        ""EntityId"": 9,
+        ""Name"": ""KEY_DESCRIPTION""
+      },
+      ""RecordList"": [
+        
+      ],
+      ""TaskType"": ""Field Update"",
+      ""TaskCategory"": ""immediate"",
+      ""CriteriaName"": ""Criteria1""
+    }
+  ],
+  ""ScheduleInfo"": [
+    
+  ],
+  ""FinalTasks"": [
+    
+  ],
+  ""ScheduleTask"": [
+    {
+      ""CriteriaName"": ""Criteria1"",
+      ""ActionName"": ""Schedule Action for Prospect Creation"",
+      ""Criteria"": [
+        {
+          ""LogicalCondition"": {
+            ""Value"": 1,
+            ""Text"": ""( ##1## AND ##2## )""
+          },
+          ""Criteria"": [
+            {
+              ""Operator"": ""Like(N'%@%')"",
+              ""TextSearch"": ""ZINFI"",
+              ""LogicalOperator"": ""and"",
+              ""Order"": 0,
+              ""Attribute"": {
+                ""Id"": 673,
+                ""EntityId"": 9,
+                ""Name"": ""FirstName"",
+                ""Label"": ""First Name"",
+                ""FormulaType"": ""Text"",
+                ""AppType"": ""textbox"",
+                ""LangShortKey"": ""LBL_LIST_FIRST_NAME"",
+                ""IsRequired"": true,
+                ""IsSelected"": ""false"",
+                ""LangKey"": ""LBL_FIRST_Name"",
+                ""IsIdentity"": ""true"",
+                ""Order"": 0,
+                ""IsSystem"": false,
+                ""hasDependent"": false,
+                ""DropdownChildReferance"": """",
+                ""IsPredictive"": false,
+                ""IsPredictiveSearchShowAllValues"": false
+              }
+            },
+            {
+              ""Operator"": ""in(N'@')"",
+              ""TextSearch"": ""USA"",
+              ""LogicalOperator"": ""and"",
+              ""Order"": 0,
+              ""Attribute"": {
+                ""Id"": 679,
+                ""EntityId"": 9,
+                ""Name"": ""KEY_PRIMARY_ADDRESS_COUNTRY"",
+                ""Label"": ""Primary Address Country"",
+                ""FormulaType"": ""Text"",
+                ""AppType"": ""dropdown"",
+                ""LangShortKey"": ""LBL_PRIMARY_ADDRESS_COUNTRY"",
+                ""IsRequired"": false,
+                ""IsSelected"": ""false"",
+                ""LangKey"": ""LBL_PRIMARY_ADDRESS_COUNTRY"",
+                ""IsIdentity"": ""false"",
+                ""Order"": 0,
+                ""IsSystem"": false,
+                ""hasDependent"": true,
+                ""DropdownChildReferance"": ""[{\""BusinessRule\"":55,\""FieldReferance\"":\""KEY_PRIMARY_ADDRESS_COUNTRY\"",\""FieldReferanceValue\"":\""\"",\""FieldDependentReferance\"":\""KEY_PRIMARY_ADDRESS_STATE\"",\""InputType\"":\""SQL\""}]"",
+                ""BusinessRule"": 54,
+                ""IsPredictive"": false,
+                ""IsPredictiveSearchShowAllValues"": false
+              },
+              ""SearchList"": [
+                {
+                  ""key"": ""USA"",
+                  ""value"": ""USA"",
+                  ""Id"": 679,
+                  ""IsSelected"": true
+                }
+              ],
+              ""SearchValue"": ""USA""
+            }
+          ],
+          ""LogicalConditionStatus"": true,
+          ""CriteriaName"": ""ScheduleCriteria1"",
+          ""Sequence"": 1
+        }
+      ],
+      ""Task"": [
+        {
+          ""Id"": """",
+          ""Name"": ""Schedule Email"",
+          ""Template"": ""857"",
+          ""AdditionalEmails"": ""saemailcheckuser@yopmail.com"",
+          ""RecipientType"": ""Related User"",
+          ""RecordList"": [
+            {
+              ""Id"": 33540,
+              ""Name"": ""Modified by"",
+              ""IsSelected"": true
+            }
+          ],
+          ""TaskType"": ""Email"",
+          ""TaskCategory"": ""scheduleaction"",
+          ""CriteriaName"": ""ScheduleCriteria1""
+        }
+      ],
+      ""FinalTasks"": [
+        
+      ],
+      ""DurationOffset"": ""15"",
+      ""DurationFrequency"": ""Minutes After"",
+      ""SourceTime"": ""KEY_DATE_MODIFIED""
+    },
+    {
+      ""CriteriaName"": ""Criteria1"",
+      ""ActionName"": ""Schedule Action 2"",
+      ""Criteria"": [
+        {
+          ""LogicalCondition"": {
+            ""Value"": 1,
+            ""Text"": ""(##1##)""
+          },
+          ""Criteria"": [
+            {
+              ""Operator"": ""!=''"",
+              ""TextSearch"": """",
+              ""LogicalOperator"": ""and"",
+              ""Order"": 0,
+              ""Attribute"": {
+                ""Id"": 11475,
+                ""EntityId"": 9,
+                ""Name"": ""KEY_CustomField1"",
+                ""Label"": ""Annual Revenue"",
+                ""FormulaType"": ""Text"",
+                ""AppType"": ""textbox"",
+                ""LangShortKey"": ""LBL_ANNUAL_REVENUE"",
+                ""IsRequired"": false,
+                ""IsSelected"": ""false"",
+                ""LangKey"": ""LBL_ANNUAL_REVENUE"",
+                ""IsIdentity"": ""false"",
+                ""Order"": 0,
+                ""IsSystem"": false,
+                ""hasDependent"": false,
+                ""DropdownChildReferance"": """",
+                ""IsPredictive"": false,
+                ""IsPredictiveSearchShowAllValues"": false
+              }
+            }
+          ],
+          ""LogicalConditionStatus"": true,
+          ""CriteriaName"": ""ScheduleCriteria1"",
+          ""Sequence"": 1
+        }
+      ],
+      ""Task"": [
+        {
+          ""Id"": """",
+          ""Name"": ""Assignment"",
+          ""AssignmentType"": ""User"",
+          ""Access"": ""10"",
+          ""RecordList"": [
+            {
+              ""Id"": ""96CAD091-25EB-4C27-8FFB-E877AAEAF9C5"",
+              ""Name"": ""zinfitestapprovalflwchku@yopmail.com"",
+              ""IsSelected"": true
+            }
+          ],
+          ""TaskType"": ""Assignment"",
+          ""TaskCategory"": ""scheduleaction"",
+          ""CriteriaName"": ""ScheduleCriteria1""
+        },
+        {
+          ""Id"": """",
+          ""Name"": ""Email for schedule action 2"",
+          ""Template"": ""93"",
+          ""AdditionalEmails"": ""sa1emailcheckuser@yopmail.com"",
+          ""RecipientType"": ""Related User"",
+          ""RecordList"": [
+            {
+              ""Id"": 33540,
+              ""Name"": ""Modified by"",
+              ""IsSelected"": true
+            }
+          ],
+          ""TaskType"": ""Email"",
+          ""TaskCategory"": ""scheduleaction"",
+          ""CriteriaName"": ""ScheduleCriteria1""
+        }
+      ],
+      ""FinalTasks"": [
+        
+      ],
+      ""DurationOffset"": ""2"",
+      ""DurationFrequency"": ""Days After"",
+      ""SourceTime"": ""KEY_DATE_ENTERED""
+    }
+  ]
+}"
+4,"I need to configure a workflow named ""Opportunity Create (Test, Do not delete)"" for the ""Opportunities"" module, which is currently inactive. This workflow will be triggered whenever an opportunity record is created or updated. It includes several conditions and actions:
+Firstly, if the ""Account Name"" is not empty, the ""Lead Source"" is set to ""Partner,"" the ""Sales Stage"" is either ""1 - Prospecting,"" ""4 - Qualification,"" or ""5 - Needs Analysis,"" or if the ""Sales Stage"" has changed, the workflow will execute some immediate actions. Specifically, an email titled ""Opp Created"" will be sent to the related user using the template ""872,"" with an additional email address, ""oppworkflowchk@yopmail.com.""
+Additionally, the workflow incorporates scheduled actions. If the ""Sales Stage"" is updated to ""10 - Closed Won,"" a scheduled task will be executed. This task includes updating the ""Description"" field with the text ""Opportunity Updated"" and sending an email titled ""Opportunity Updated"" using the template ""885"" to the related user with an additional email address, ""oppworkflowchk@yopmail.com."" This action will be scheduled to occur immediately after the ""Date Modified.""","{
+  ""ID"": ""9380EF06-7468-4F03-ACB6-B21A54B28B75"",
+  ""RuleName"": ""Opportunity Create (Test, Do not delete)"",
+  ""Status"": ""InActive"",
+  ""Module"": {
+    ""Id"": """",
+    ""ModuleObject"": ""11"",
+    ""ModuleName"": ""Opportunities"",
+    ""ModuleDescription"": ""Workflow for the application opportunities. "",
+    ""ModuleEvaluationCondition"": ""Both"",
+    ""FieldChangeList"": null,
+    ""ModuleEvaluationFrequency"": ""Once"",
+    ""RecordList"": [
+      
+    ]
+  },
+  ""Criteria"": [
+    {
+      ""Sequence"": 1,
+      ""Name"": ""Criteria1"",
+      ""LogicalCondition"": {
+        ""Value"": 3,
+        ""Text"": ""( ##1## AND ##2## AND ##3##) OR (##4## AND ##5## )""
+      },
+      ""Criteria"": [
+        {
+          ""Operator"": ""!=''"",
+          ""TextSearch"": """",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 693,
+            ""EntityId"": 11,
+            ""Name"": ""KEY_ACCOUNT_NAME"",
+            ""Label"": ""Account Name"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""lookup"",
+            ""LangShortKey"": ""LBL_LIST_ACCOUNT_NAME"",
+            ""IsRequired"": true,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""LBL_ACCOUNT_NAME"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false
+          }
+        },
+        {
+          ""Operator"": ""in(N'@')"",
+          ""TextSearch"": ""Partner"",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 538,
+            ""EntityId"": 11,
+            ""Name"": ""KEY_LEAD_SOURCE"",
+            ""Label"": ""Lead Source"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""dropdown"",
+            ""LangShortKey"": ""LBL_LEAD_SOURCE"",
+            ""IsRequired"": true,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""LBL_LEAD_SOURCE"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""BusinessRule"": 11,
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false
+          },
+          ""SearchList"": [
+            {
+              ""key"": ""Partner"",
+              ""value"": ""Partner"",
+              ""Id"": 538,
+              ""IsSelected"": true
+            }
+          ],
+          ""SearchValue"": ""Partner""
+        },
+        {
+          ""Operator"": ""in(N'@')"",
+          ""TextSearch"": ""1 - Prospecting,4 - Qualification,5 - Needs Analysis"",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 544,
+            ""EntityId"": 11,
+            ""Name"": ""KEY_SALES_STAGE"",
+            ""Label"": ""Sales Stage"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""dropdown"",
+            ""LangShortKey"": ""LBL_LIST_SALES_STAGE"",
+            ""IsRequired"": true,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""LBL_SALES_STAGE"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""BusinessRule"": 9,
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false
+          },
+          ""SearchList"": [
+            {
+              ""key"": ""1 - Prospecting"",
+              ""value"": ""1 - Prospecting"",
+              ""Id"": 544,
+              ""IsSelected"": true
+            },
+            {
+              ""key"": ""4 - Qualification"",
+              ""value"": ""4 - Qualification"",
+              ""Id"": 544,
+              ""IsSelected"": true
+            },
+            {
+              ""key"": ""5 - Needs Analysis"",
+              ""value"": ""5 - Needs Analysis"",
+              ""Id"": 544,
+              ""IsSelected"": true
+            }
+          ],
+          ""SearchValue"": ""1 - Prospecting,4 - Qualification,5 - Needs Analysis""
+        },
+        {
+          ""Operator"": ""isChanged"",
+          ""TextSearch"": ""1"",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 544,
+            ""EntityId"": 11,
+            ""Name"": ""KEY_SALES_STAGE"",
+            ""Label"": ""Sales Stage"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""dropdown"",
+            ""LangShortKey"": ""LBL_LIST_SALES_STAGE"",
+            ""IsRequired"": true,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""LBL_SALES_STAGE"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""BusinessRule"": 9,
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false
+          },
+          ""SearchList"": ""[]"",
+          ""SearchValue"": ""1""
+        },
+        {
+          ""Operator"": ""in(N'@')"",
+          ""TextSearch"": ""10 - Closed Won"",
+          ""LogicalOperator"": ""and"",
+          ""Order"": 0,
+          ""Attribute"": {
+            ""Id"": 544,
+            ""EntityId"": 11,
+            ""Name"": ""KEY_SALES_STAGE"",
+            ""Label"": ""Sales Stage"",
+            ""FormulaType"": ""Text"",
+            ""AppType"": ""dropdown"",
+            ""LangShortKey"": ""LBL_LIST_SALES_STAGE"",
+            ""IsRequired"": true,
+            ""IsSelected"": ""false"",
+            ""LangKey"": ""LBL_SALES_STAGE"",
+            ""IsIdentity"": ""false"",
+            ""Order"": 0,
+            ""IsSystem"": false,
+            ""hasDependent"": false,
+            ""DropdownChildReferance"": """",
+            ""BusinessRule"": 9,
+            ""IsPredictive"": false,
+            ""IsPredictiveSearchShowAllValues"": false
+          },
+          ""SearchList"": [
+            {
+              ""key"": ""10 - Closed Won"",
+              ""value"": ""10 - Closed Won"",
+              ""Id"": 544,
+              ""IsSelected"": true
+            }
+          ],
+          ""SearchValue"": ""10 - Closed Won""
+        }
+      ]
+    }
+  ],
+  ""Task"": [
+    {
+      ""Id"": """",
+      ""Name"": ""Opp Created"",
+      ""Template"": ""872"",
+      ""AdditionalEmails"": ""oppworkflowchk@yopmail.com"",
+      ""RecipientType"": ""Related User"",
+      ""RecordList"": [
+        {
+          ""Id"": 33547,
+          ""Name"": ""Created by"",
+          ""IsSelected"": true
+        }
+      ],
+      ""TaskType"": ""Email"",
+      ""TaskCategory"": ""immediate"",
+      ""CriteriaName"": ""Criteria1""
+    }
+  ],
+  ""ScheduleInfo"": [
+    
+  ],
+  ""FinalTasks"": [
+    
+  ],
+  ""ScheduleTask"": [
+    {
+      ""CriteriaName"": ""Criteria1"",
+      ""ActionName"": ""Schedule Action Opp"",
+      ""Criteria"": [
+        {
+          ""LogicalCondition"": {
+            ""Value"": 1,
+            ""Text"": ""(##1##)""
+          },
+          ""Criteria"": [
+            {
+              ""Operator"": ""in(N'@')"",
+              ""TextSearch"": ""10 - Closed Won"",
+              ""LogicalOperator"": ""and"",
+              ""Order"": 0,
+              ""Attribute"": {
+                ""Id"": 544,
+                ""EntityId"": 11,
+                ""Name"": ""KEY_SALES_STAGE"",
+                ""Label"": ""Sales Stage"",
+                ""FormulaType"": ""Text"",
+                ""AppType"": ""dropdown"",
+                ""LangShortKey"": ""LBL_LIST_SALES_STAGE"",
+                ""IsRequired"": true,
+                ""IsSelected"": ""false"",
+                ""LangKey"": ""LBL_SALES_STAGE"",
+                ""IsIdentity"": ""false"",
+                ""Order"": 0,
+                ""IsSystem"": false,
+                ""hasDependent"": false,
+                ""DropdownChildReferance"": """",
+                ""BusinessRule"": 9,
+                ""IsPredictive"": false,
+                ""IsPredictiveSearchShowAllValues"": false
+              },
+              ""SearchList"": [
+                {
+                  ""key"": ""10 - Closed Won"",
+                  ""value"": ""10 - Closed Won"",
+                  ""Id"": 544,
+                  ""IsSelected"": true
+                }
+              ],
+              ""SearchValue"": ""10 - Closed Won""
+            }
+          ],
+          ""LogicalConditionStatus"": true,
+          ""CriteriaName"": ""ScheduleCriteria1"",
+          ""Sequence"": 1
+        }
+      ],
+      ""Task"": [
+        {
+          ""Id"": """",
+          ""Name"": ""Description Field Update"",
+          ""FieldToUpdate"": ""536"",
+          ""FieldValueUpdateType"": ""Text"",
+          ""NewFieldValue"": ""Opportunity Updated"",
+          ""SelectedFieldObject"": {
+            ""key"": 536,
+            ""value"": ""Description"",
+            ""AppType"": ""textbox"",
+            ""EntityId"": 11,
+            ""Name"": ""KEY_DESCRIPTION""
+          },
+          ""RecordList"": [
+            
+          ],
+          ""TaskType"": ""Field Update"",
+          ""TaskCategory"": ""scheduleaction"",
+          ""CriteriaName"": ""ScheduleCriteria1""
+        },
+        {
+          ""Id"": """",
+          ""Name"": ""Opportunity Updated"",
+          ""Template"": ""885"",
+          ""AdditionalEmails"": ""oppworkflowchk@yopmail.com"",
+          ""RecipientType"": ""Related User"",
+          ""RecordList"": [
+            {
+              ""Id"": 33548,
+              ""Name"": ""Modified by"",
+              ""IsSelected"": true
+            }
+          ],
+          ""TaskType"": ""Email"",
+          ""TaskCategory"": ""scheduleaction"",
+          ""CriteriaName"": ""ScheduleCriteria1""
+        }
+      ],
+      ""FinalTasks"": [
+        
+      ],
+      ""DurationOffset"": ""0"",
+      ""DurationFrequency"": ""Minutes After"",
+      ""SourceTime"": ""KEY_DATE_MODIFIED""
+    }
+  ]
+}
+"

@@ -13,6 +13,7 @@ python-dotenv = "*"
 tenacity = "*"
 pymongo = "*"
 langchain-groq = "*"
+pandas = "*"
 
 [dev-packages]
 
