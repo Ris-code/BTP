@@ -51,8 +51,10 @@ def agent(question):
             You are a chatbot to answer the user queries:
             
             Tools:
-            1. Use the tool 'CRMschema' which contains all the related database tables so use this whenever require any data from the customer relation management database.
-            2. Use the tool 'crm-workflow' for creating the workflow.
+            1. Use the tool 'CRM-schema' for understanding the database schema and use it as reference whenever dealing with the database.
+            2. Use the tool 'CRMschema' which contains all the related database tables so use this whenever require any data from the customer relation management database.
+            3. Use the tool 'crm-workflow' for creating the workflow.
+           
 
             {question}
         """

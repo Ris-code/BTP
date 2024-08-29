@@ -21,5 +21,11 @@ def sqlite_table_schema(conn, name):
 
 tables = list(map(lambda x: x[0], get_tables()))
 
+table_schemas = []
 for table in tables:
-    print(sqlite_table_schema(conn, table))
+    table_schemas.append(
+        f"""
+        {sqlite_table_schema(conn, table)}
+        """
+    )
+    # print(sqlite_table_schema(conn, table))

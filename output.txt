@@ -1,28 +1,307 @@
 ```json
 {
-  "workflow": {
-    "steps": [
-      {
-        "name": "Get Customer Data",
-        "description": "Retrieve customer information from the CRM database",
-        "input": {
-          "type": "customer_id"
-        },
-        "output": {
-          "type": "customer_data"
-        }
-      },
-      {
-        "name": "Process Order",
-        "description": "Process the customer's order",
-        "input": {
-          "type": "order_id"
-        },
-        "output": {
-          "type": "order_status"
-        }
-      }
-    ]
-  }
+	"product_category_name_translation": {
+		"product_category_name": {
+			"description": "product category name",
+			"type": "TEXT"
+		},
+		"product_category_name_english": {
+			"description": "product category name in english",
+			"type": "TEXT"
+		}
+	},
+	"sellers": {
+		"seller_id": {
+			"description": "seller id",
+			"type": "TEXT"
+		},
+		"seller_zip_code_prefix": {
+			"description": "seller zip code prefix",
+			"type": "INTEGER"
+		},
+		"seller_city": {
+			"description": "seller city",
+			"type": "TEXT"
+		},
+		"seller_state": {
+			"description": "seller state",
+			"type": "TEXT"
+		}
+	},
+	"customers": {
+		"customer_id": {
+			"description": "customer id",
+			"type": "TEXT"
+		},
+		"customer_unique_id": {
+			"description": "customer unique id",
+			"type": "TEXT"
+		},
+		"customer_zip_code_prefix": {
+			"description": "customer zip code prefix",
+			"type": "INTEGER"
+		},
+		"customer_city": {
+			"description": "customer city",
+			"type": "TEXT"
+		},
+		"customer_state": {
+			"description": "customer state",
+			"type": "TEXT"
+		}
+	},
+	"geolocation": {
+		"geolocation_zip_code_prefix": {
+			"description": "geolocation zip code prefix",
+			"type": "INTEGER"
+		},
+		"geolocation_lat": {
+			"description": "geolocation latitude",
+			"type": "REAL"
+		},
+		"geolocation_lng": {
+			"description": "geolocation longitude",
+			"type": "REAL"
+		},
+		"geolocation_city": {
+			"description": "geolocation city",
+			"type": "TEXT"
+		},
+		"geolocation_state": {
+			"description": "geolocation state",
+			"type": "TEXT"
+		}
+	},
+	"order_items": {
+		"order_id": {
+			"description": "order id",
+			"type": "TEXT"
+		},
+		"order_item_id": {
+			"description": "order item id",
+			"type": "INTEGER"
+		},
+		"product_id": {
+			"description": "product id",
+			"type": "TEXT"
+		},
+		"seller_id": {
+			"description": "seller id",
+			"type": "TEXT"
+		},
+		"shipping_limit_date": {
+			"description": "shipping limit date",
+			"type": "TEXT"
+		},
+		"price": {
+			"description": "price",
+			"type": "REAL"
+		},
+		"freight_value": {
+			"description": "freight value",
+			"type": "REAL"
+		}
+	},
+	"order_payments": {
+		"order_id": {
+			"description": "order id",
+			"type": "TEXT"
+		},
+		"payment_sequential": {
+			"description": "payment sequential",
+			"type": "INTEGER"
+		},
+		"payment_type": {
+			"description": "payment type",
+			"type": "TEXT"
+		},
+		"payment_installments": {
+			"description": "payment installments",
+			"type": "INTEGER"
+		},
+		"payment_value": {
+			"description": "payment value",
+			"type": "REAL"
+		}
+	},
+	"order_reviews": {
+		"review_id": {
+			"description": "review id",
+			"type": "TEXT"
+		},
+		"order_id": {
+			"description": "order id",
+			"type": "TEXT"
+		},
+		"review_score": {
+			"description": "review score",
+			"type": "INTEGER"
+		},
+		"review_comment_title": {
+			"description": "review comment title",
+			"type": "TEXT"
+		},
+		"review_comment_message": {
+			"description": "review comment message",
+			"type": "TEXT"
+		},
+		"review_creation_date": {
+			"description": "review creation date",
+			"type": "TEXT"
+		},
+		"review_answer_timestamp": {
+			"description": "review answer timestamp",
+			"type": "TEXT"
+		}
+	},
+	"orders": {
+		"order_id": {
+			"description": "order id",
+			"type": "TEXT"
+		},
+		"customer_id": {
+			"description": "customer id",
+			"type": "TEXT"
+		},
+		"order_status": {
+			"description": "order status",
+			"type": "TEXT"
+		},
+		"order_purchase_timestamp": {
+			"description": "order purchase timestamp",
+			"type": "TEXT"
+		},
+		"order_approved_at": {
+			"description": "order approved at",
+			"type": "TEXT"
+		},
+		"order_delivered_carrier_date": {
+			"description": "order delivered carrier date",
+			"type": "TEXT"
+		},
+		"order_delivered_customer_date": {
+			"description": "order delivered customer date",
+			"type": "TEXT"
+		},
+		"order_estimated_delivery_date": {
+			"description": "order estimated delivery date",
+			"type": "TEXT"
+		}
+	},
+	"products": {
+		"product_id": {
+			"description": "product id",
+			"type": "TEXT"
+		},
+		"product_category_name": {
+			"description": "product category name",
+			"type": "TEXT"
+		},
+		"product_name_lenght": {
+			"description": "product name length",
+			"type": "REAL"
+		},
+		"product_description_lenght": {
+			"description": "product description length",
+			"type": "REAL"
+		},
+		"product_photos_qty": {
+			"description": "product photos quantity",
+			"type": "REAL"
+		},
+		"product_weight_g": {
+			"description": "product weight in grams",
+			"type": "REAL"
+		},
+		"product_length_cm": {
+			"description": "product length in centimeters",
+			"type": "REAL"
+		},
+		"product_height_cm": {
+			"description": "product height in centimeters",
+			"type": "REAL"
+		},
+		"product_width_cm": {
+			"description": "product width in centimeters",
+			"type": "REAL"
+		}
+	},
+	"leads_qualified": {
+		"mql_id": {
+			"description": "marketing qualified lead id",
+			"type": "TEXT"
+		},
+		"first_contact_date": {
+			"description": "first contact date",
+			"type": "TEXT"
+		},
+		"landing_page_id": {
+			"description": "landing page id",
+			"type": "TEXT"
+		},
+		"origin": {
+			"description": "lead origin",
+			"type": "TEXT"
+		}
+	},
+	"leads_closed": {
+		"mql_id": {
+			"description": "marketing qualified lead id",
+			"type": "TEXT"
+		},
+		"seller_id": {
+			"description": "seller id",
+			"type": "TEXT"
+		},
+		"sdr_id": {
+			"description": "sales development representative id",
+			"type": "TEXT"
+		},
+		"sr_id": {
+			"description": "sales representative id",
+			"type": "TEXT"
+		},
+		"won_date": {
+			"description": "won date",
+			"type": "TEXT"
+		},
+		"business_segment": {
+			"description": "business segment",
+			"type": "TEXT"
+		},
+		"lead_type": {
+			"description": "lead type",
+			"type": "TEXT"
+		},
+		"lead_behaviour_profile": {
+			"description": "lead behavior profile",
+			"type": "TEXT"
+		},
+		"has_company": {
+			"description": "has company",
+			"type": "INTEGER"
+		},
+		"has_gtin": {
+			"description": "has gtin",
+			"type": "INTEGER"
+		},
+		"average_stock": {
+			"description": "average stock",
+			"type": "TEXT"
+		},
+		"business_type": {
+			"description": "business type",
+			"type": "TEXT"
+		},
+		"declared_product_catalog_size": {
+			"description": "declared product catalog size",
+			"type": "REAL"
+		},
+		"declared_monthly_revenue": {
+			"description": "declared monthly revenue",
+			"type": "REAL"
+		}
+	}
 }
+"
 ```

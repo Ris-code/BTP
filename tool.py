@@ -48,6 +48,11 @@ retrieve_tool_1 = retrieve_tool(
     topic="crm-workflow", 
     description="Provide the crm workflow json according to the provided criterias from the provided prompt"
 )
+retrieve_tool_2 = retrieve_tool(
+    "sql-schemas-1", 
+    topic="CRM-schema", 
+    description="Describes the schema of the customer relationship database schema",
+)
 
 @tool
 def CRMschema(question):
@@ -192,4 +197,4 @@ def CRMschema(question):
     return result['output']
 
 # List of tools
-tools = [retrieve_tool_1, CRMschema]
+tools = [retrieve_tool_1, retrieve_tool_2, CRMschema]
