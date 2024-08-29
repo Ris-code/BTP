@@ -1,0 +1,69 @@
+{
+  "ID": "random",
+  "RuleName": "Lead Follow-up Workflow",
+  "Status": "Inactive",
+  "Module": {
+    "ModuleObject": "Leads",
+    "ModuleName": "Leads",
+    "ModuleEvaluationCondition": "When a new lead is added"
+  },
+  "Criteria": {
+    "LogicalCondition": {
+      "Value": "OR",
+      "Text": "OR"
+    },
+    "Criteria": [
+      {
+        "Operator": "equals",
+        "TextSearch": "",
+        "LogicalOperator": "AND",
+        "Attribute": {
+          "Name": "LeadSource",
+          "Label": "Lead Source"
+        },
+        "SearchValue": "Website"
+      },
+      {
+        "Operator": "greaterThan",
+        "TextSearch": "",
+        "LogicalOperator": "AND",
+        "Attribute": {
+          "Name": "DaysSinceFirstContact",
+          "Label": "Days Since First Contact"
+        },
+        "SearchValue": "7"
+      },
+      {
+        "Operator": "notEquals",
+        "TextSearch": "",
+        "LogicalOperator": "AND",
+        "Attribute": {
+          "Name": "LeadStatus",
+          "Label": "Lead Status"
+        },
+        "SearchValue": "Closed"
+      }
+    ]
+  },
+  "Task": [
+    {
+      "Name": "New Qualified Lead from Website",
+      "Template": "New Website Lead Notification",
+      "AdditionalEmails": "",
+      "RecipientType": "Specific Email",
+      "TaskType": "Email",
+      "TaskCategory": "immediate",
+      "CriteriaName": "criteria1"
+    },
+    {
+      "Name": "Follow-up Needed for Qualified Lead",
+      "Template": "Qualified Lead Follow-up Reminder",
+      "AdditionalEmails": "",
+      "RecipientType": "Specific Email",
+      "TaskType": "Email",
+      "TaskCategory": "immediate",
+      "CriteriaName": "criteria2"
+    }
+  ],
+  "ScheduledTask": []
+}
