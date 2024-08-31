@@ -8,14 +8,18 @@ from pinecone import Pinecone, ServerlessSpec
 from langchain_pinecone import PineconeVectorStore
 from langchain_community.embeddings import DeepInfraEmbeddings
 from dotenv import load_dotenv
+import streamlit as st
 
 # Load environment variables
 load_dotenv()
 
-os.environ["HF_TOKEN"] = os.getenv("HUGGING_FACE_API_KEY")
-os.environ["PINECONE_API_KEY"] = os.getenv("PINECONE_API_KEY")
-os.environ["DEEPINFRA_API_TOKEN"] = os.getenv("DEEPINFRA_API_TOKEN")
-# print(os.getenv("PINECONE_API_KEY"))
+# os.environ["HF_TOKEN"] = os.getenv("HUGGING_FACE_API_KEY")
+# os.environ["PINECONE_API_KEY"] = os.getenv("PINECONE_API_KEY")
+# os.environ["DEEPINFRA_API_TOKEN"] = os.getenv("DEEPINFRA_API_TOKEN")
+
+os.environ["HF_TOKEN"] = st.secrets["HUGGING_FACE_API_KEY"]
+os.environ["PINECONE_API_KEY"] = st.secrets("PINECONE_API_KEY")
+os.environ["DEEPINFRA_API_TOKEN"] = st.secrets("DEEPINFRA_API_TOKEN")
 
 embeddings = DeepInfraEmbeddings(
     model_id="sentence-transformers/all-MiniLM-L6-v2",

@@ -13,14 +13,19 @@ from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from dotenv import load_dotenv
 import pandas as pd
+import streamlit as st
 
 
 store = {}
 
 load_dotenv()
 
-os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
-os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+# os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
+# os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
+
+os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
+os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]
+
 # Initialize language model
 llm = ChatGroq(
     model="gemma2-9b-it",
@@ -140,9 +145,9 @@ def agent(question):
 
             This schema provides a flexible structure to represent the various workflows described in the prompts, capturing the conditions, immediate actions, and scheduled actions for each workflow.
 
-            GuideLines: 
+            GuideLines:
                 1. Extract the entities mentioned in the json format and fill the values.
-                2. Strictlly follow the json format provided.
+                2. Strictly follow the json format provided.
                 3. Properly understand the tasks, scheduled tasks as mentioned in the prompt in the given order.
                 4. Add the criterias and the subcriterias in the json files based on the explanation provided after extracting the entities from the prompt.        
         """
@@ -216,7 +221,7 @@ def agent(question):
             }
         return prompt_template.format(
             question=question,
-            json = json_template,
+            json=json_template,
         )
 
     # Prepare the prompt
@@ -231,24 +236,21 @@ def agent(question):
 
     # print(response)
     output = remove_code_block_markers(response['output'])
-    with open("output.json", "w") as file:
-        file.write(output)
+    # with open("output.json", "w") as file:
+    #     file.write(output)
 
     return output
 
-question = input("Ask a question:")
-output = agent(question)
+if __name__ == '__main__':
+    question = input("Ask a question:")
+    output = agent(question)
 
+    try:
+        df = pd.read_csv("result.csv")
+    except:
+        df = pd.DataFrame(columns = ["Prompt" , "JSON"])
 
-try:
-    df = pd.read_csv("result.csv")
-except:
-    df = pd.DataFrame(columns = ["Prompt" , "JSON"])
+    df.loc[len(df.index)] = [question, output]
+    df.to_csv("result.csv", index=False)
 
-df.loc[len(df.index)] = [question, output]
-df.to_csv("result.csv", index=False)
-
-print(output)
-
-# with open("output.txt", "w") as file:
-#     file.write(output)
+    print(output)
