@@ -14,6 +14,7 @@ tenacity = "*"
 pymongo = "*"
 langchain-groq = "*"
 pandas = "*"
+streamlit = '*'
 langchain-google-genai = "*"
 langchain-openai = "*"
 
