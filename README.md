@@ -1,4 +1,4 @@
-# BTP
+# Workflow Automation using LLM
 
 ## Installation
 ```bash 
