@@ -1,16 +1,16 @@
 {
   "ID": "random",
-  "RuleName": "Lead Follow-up Workflow",
+  "RuleName": "Meeting Request",
   "Status": "Inactive",
   "Module": {
-    "ModuleObject": "Leads",
-    "ModuleName": "Leads",
-    "ModuleEvaluationCondition": "When a new lead is added"
+    "ModuleObject": "Email",
+    "ModuleName": "Email",
+    "ModuleEvaluationCondition": "When a new lead is created"
   },
   "Criteria": {
     "LogicalCondition": {
-      "Value": "OR",
-      "Text": "OR"
+      "Value": "AND",
+      "Text": "AND"
     },
     "Criteria": [
       {
@@ -18,51 +18,32 @@
         "TextSearch": "",
         "LogicalOperator": "AND",
         "Attribute": {
-          "Name": "LeadSource",
-          "Label": "Lead Source"
+          "Name": "lead_email",
+          "Label": "Lead Email"
         },
-        "SearchValue": "Website"
+        "SearchValue": "tanish@bsdka.com"
       },
       {
-        "Operator": "greaterThan",
+        "Operator": "equals",
         "TextSearch": "",
         "LogicalOperator": "AND",
         "Attribute": {
-          "Name": "DaysSinceFirstContact",
-          "Label": "Days Since First Contact"
+          "Name": "meeting_date",
+          "Label": "Meeting Date"
         },
-        "SearchValue": "7"
-      },
-      {
-        "Operator": "notEquals",
-        "TextSearch": "",
-        "LogicalOperator": "AND",
-        "Attribute": {
-          "Name": "LeadStatus",
-          "Label": "Lead Status"
-        },
-        "SearchValue": "Closed"
+        "SearchValue": "tomorrow at 12 pm"
       }
     ]
   },
   "Task": [
     {
-      "Name": "New Qualified Lead from Website",
-      "Template": "New Website Lead Notification",
+      "Name": "Send Meeting Request Email",
+      "Template": "MeetingRequestTemplate",
       "AdditionalEmails": "",
-      "RecipientType": "Specific Email",
+      "RecipientType": "Lead",
       "TaskType": "Email",
-      "TaskCategory": "immediate",
+      "TaskCategory": "Immediate",
       "CriteriaName": "criteria1"
-    },
-    {
-      "Name": "Follow-up Needed for Qualified Lead",
-      "Template": "Qualified Lead Follow-up Reminder",
-      "AdditionalEmails": "",
-      "RecipientType": "Specific Email",
-      "TaskType": "Email",
-      "TaskCategory": "immediate",
-      "CriteriaName": "criteria2"
     }
   ],
   "ScheduledTask": []

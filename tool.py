@@ -10,13 +10,13 @@ from langchain_community.embeddings import DeepInfraEmbeddings
 from langchain_community.utilities import SQLDatabase
 from sqlalchemy import create_engine
 from langchain_community.agent_toolkits import create_sql_agent
+from model import llm
 
 # Load environment variables from .env file
 load_dotenv()
 os.environ["PINECONE_API_KEY"] = os.getenv("PINECONE_API_KEY")
 os.environ["HF_TOKEN"] = os.getenv("HUGGING_FACE_API_KEY")
 os.environ["DEEPINFRA_API_TOKEN"] = os.getenv("DEEPINFRA_API_TOKEN")
-os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 
 embeddings = DeepInfraEmbeddings(
     model_id="sentence-transformers/all-MiniLM-L6-v2",
@@ -182,11 +182,6 @@ def CRMschema(question):
     str: The output from the SQL tool, containing the data retrieved from the database based 
          on the input question, formatted as a string.
     """
-    llm = ChatGroq(
-        model="gemma2-9b-it",
-        temperature=0.0,
-        max_retries=2,
-    )
 
     engine = create_engine("sqlite:///test.db")
     db = SQLDatabase(engine=engine)

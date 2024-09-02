@@ -13,20 +13,13 @@ from langchain_core.chat_history import BaseChatMessageHistory
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from dotenv import load_dotenv
 import pandas as pd
-
+from model import llm
 
 store = {}
 
 load_dotenv()
 
-os.environ["GROQ_API_KEY"] = os.getenv("GROQ_API_KEY")
 os.environ["LANGCHAIN_API_KEY"] = os.getenv("LANGCHAIN_API_KEY")
-# Initialize language model
-llm = ChatGroq(
-    model="gemma2-9b-it",
-    temperature=0.0,
-    max_retries=2,
-)
 
 # Bind the tool to the model
 llm = llm.bind_tools(tools)
@@ -224,7 +217,7 @@ def agent(question):
     formatted_prompt = format_prompt(prompt_template, question)
 
     # Asynchronously invoke the agent
-    response = agent_with_chat_history.invoke(
+    response = agent_executor.invoke(
         {"input": formatted_prompt},
         {"configurable": {"session_id": "<foo>"}}
     )
