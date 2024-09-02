@@ -229,7 +229,7 @@ def agent(question):
     formatted_prompt = format_prompt(prompt_template, question)
 
     # Asynchronously invoke the agent
-    response = agent_with_chat_history.invoke(
+    response = agent_executor.invoke(
         {"input": formatted_prompt},
         {"configurable": {"session_id": "<foo>"}}
     )
