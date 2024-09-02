@@ -33,7 +33,8 @@ if __name__ == '__main__':
                 
                 else:
                     with cols[2]:
-                        result = agent(prompt)
+                        with st.spinner("Generating JSON based on the prompt..."):
+                            result = agent(prompt)
                 
                         try:
                             json_object = json.loads(result)
@@ -62,8 +63,10 @@ if __name__ == '__main__':
                             st.write(json_object)
                             
                         except json.JSONDecodeError:
-                            st.write("Error: The extracted JSON is not valid.")
+                            st.markdown("##### JSON response could not be fetched from the server.")
+                            st.markdown("*Try submitting the prompt again after 5 minutes.*")
                             
         except Exception as e:
             with cols[2]:
-                st.write(e)
+                st.markdown("##### JSON response could not be fetched from the server.")
+                st.markdown("*Try submitting the prompt again after 5 minutes.*")
