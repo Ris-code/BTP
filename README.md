@@ -13,7 +13,6 @@ pipenv shell
 ```bash 
 pipenv install
 ```
-```
 ```bash 
 streamlit run streamlit_app.py
 ```
