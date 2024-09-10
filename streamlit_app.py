@@ -70,3 +70,5 @@ if __name__ == '__main__':
             with cols[2]:
                 st.markdown("##### JSON response could not be fetched from the server.")
                 st.markdown("*Try submitting the prompt again after 5 minutes.*")
+
+        st.image("assets/olist_schema.png")
